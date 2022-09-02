@@ -1,0 +1,16 @@
+
+[만든 파일]
+1) eggdrop. html/eggdrop.css/eggdrop.js
+2) header.html/header.css/header.js
+3) contact.html/contact.css/contact.js (CONTACT)
+
+[기능구현]
+헤더
+ 1) mouseover,mouseleave 이벤트 발생 시 sub메뉴 슬라이드 구현
+
+메인 페이지
+ 1) 슬라이드 구현: 자동 슬라이드+화살표 눌렀을 때 이동
+ 2) 에그드랍 메뉴 자동 슬라이드 구현
+ 
+CONTACT 페이지(FAQ)
+ 1) Q&A 클릭 이벤트 시 토글 구현

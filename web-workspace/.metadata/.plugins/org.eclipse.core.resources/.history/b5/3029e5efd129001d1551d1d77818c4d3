@@ -1,0 +1,56 @@
+package kr.or.iei.notice.model.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import common.JDBCTemplate;
+import kr.or.iei.notice.model.vo.Notice;
+
+public class NoticeDao {
+
+	public ArrayList<Notice> selectNoticeList(Connection conn, int start, int end) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Notice> list = new ArrayList<Notice>();
+		String query = "select * from (select rownum as rnum,n.*from (SELECT * FROM NOTICE ORDER BY NOTICE_NO DESC)n) where rnum between ? and ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Notice n = new Notice();
+				n.setNoticeNo(rset.getInt("notice_no"));
+				n.setNoticeTitle(rset.getString("notice_title"));
+				n.setNoticeContent(rset.getString("notice_content"));
+				n.setNoticeWriter(rset.getString("notice_writer"));
+				n.setReadCount(rset.getInt("read_count"));
+				n.setRegDate(rset.getString("reg_date"));
+				n.setFilename(rset.getString("filename"));
+				n.setFilepath(rset.getString("filepath"));
+				list.add(n);
+						
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return list;
+	}
+
+	public int selectNoticeCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int totalCount = 0;
+		String query = "select count(*) from notice";
+		return 0;
+	}
+
+}

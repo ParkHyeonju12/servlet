@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#noticeWrite td, #noticeWrite th {
+	border: 1px solid #ccc;
+	}
+</style>
+</head>
+<body>
+<%@include file ="/WEB-INF/views/common/header.jsp" %>
+<div class="page-content">
+	<div class="page-title">공지사항 작성</div>
+	<!--첨부파일은 method="post" enctype="multipart/form-data" 이거 두가지는 반드시 들어가줘야댐  
+	첨부파일이 포함 안되는건 enctype="multipart/form-data" 생략. 근데 그냥 들어갈지도 모르면 무조건 쓰기
+	-->
+	<form action="/noticeWrite.do" method="post" enctype="multipart/form-data">
+		<table class="tbl" id="noticeWrite">
+			<tr class="tr-1">
+				<th class="td-3">제목</th>
+				<td colspan="3">
+					<input type="text" name="noticeTitle" class="input-box">
+				</td>
+			
+			</tr>
+		</table>
+	</form>
+</div>
+<%@include file ="/WEB-INF/views/common/footer.jsp" %>
+</body>
+</html>

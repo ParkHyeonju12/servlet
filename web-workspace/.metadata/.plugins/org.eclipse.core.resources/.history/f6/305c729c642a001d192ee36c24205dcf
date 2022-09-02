@@ -1,0 +1,49 @@
+package kr.or.iei.notice.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class NoticeWriteServlet
+ */
+@WebServlet(name = "NoticeWrite", urlPatterns = { "/noticeWrite.do" })
+public class NoticeWriteServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public NoticeWriteServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//인코딩
+		request.setCharacterEncoding("utf-8");
+		//값추출
+		//multipart/form-data(파일업로드)형식이면 데이터를 꺼낸 후 추출
+		//->cos.jap 라이브러리 사용해서 처리
+		//2-1. 파일이 업로드 될 경로를 지정
+		String root = getServletContext().getRealPath("/");//webapp폴더의 절대경로
+		String saveDirectory = root+"upload/notice";
+		//비즈니스로직
+		//결과추출
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

@@ -1,0 +1,49 @@
+package kr.or.iei.member.model.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import common.JDBCTemplate;
+import kr.or.iei.member.model.vo.Member;
+
+public class MemberDao {
+
+	public Member selectOneMember(Connection conn, Member member) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = null;
+		String query = "select * from member_tbl where member_id=? and member_Pw = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberPw());
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				m = new Member();
+				m.setMemberNo(rset.getInt("memberNo"));
+				m.setMemberId(rset.getString("memberId"));
+				m.setMemberPw(rset.getString("memberPw"));
+				m.setMemberName(rset.getString("memberName"));
+				m.setMemberPhone(rset.getString("memberPhone"));
+				m.setMemberAddr(rset.getString("memberAddr"));
+				m.setMemberLevel(rset.getInt("memberLevel"));
+				m.setEnrollDate(rset.getString("enrollDate"));
+				
+			}else {
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+				
+		return m;
+	}
+
+}
