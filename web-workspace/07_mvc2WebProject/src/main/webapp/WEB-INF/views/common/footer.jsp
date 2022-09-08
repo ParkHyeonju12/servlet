@@ -3,7 +3,7 @@
     
     
 	<footer>
-      <div class="footer-content">
+      <div class="footer-content" >
         <ul>
           <li><a href="#">이용약관</a></li>
           <li><a href="#">개인정보취급방침</a></li>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.iei.notice.model.service.NoticeService;
 import kr.or.iei.notice.model.vo.Notice;
+import kr.or.iei.notice.model.vo.NoticeViewData;
 
 /**
  * Servlet implementation class NoticeViewServlet
@@ -37,9 +38,9 @@ public class NoticeViewServlet extends HttpServlet {
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		//비즈니스로직
 		NoticeService service = new NoticeService();
-		Notice n = service.selectOneNotice(noticeNo);
+		NoticeViewData nvd = service.selectOneNotice(noticeNo);
 		//결과처리
-		if(n == null) {
+		if(nvd == null) {
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 			request.setAttribute("title", "조회실패");
 			request.setAttribute("msg", "게시글이 존재하지 않습니다.");
@@ -48,7 +49,9 @@ public class NoticeViewServlet extends HttpServlet {
 			view.forward(request, response);
 		}else {
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/noticeView.jsp");
-			request.setAttribute("n", n);
+			request.setAttribute("n", nvd.getN());
+			request.setAttribute("commentList", nvd.getCommentList());
+			request.setAttribute("reCommentList", nvd.getReCommentList());
 			view.forward(request, response);
 			
 		}

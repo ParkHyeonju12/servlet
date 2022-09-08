@@ -1,0 +1,12 @@
+package kr.or.iei.photo.model.dao;
+
+import java.sql.Connection;
+
+public class PhotoDao {
+
+	public int totalCount(Connection conn) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

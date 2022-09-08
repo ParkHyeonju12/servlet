@@ -22,7 +22,7 @@
 </head>
 <body>
     <%@include file ="/WEB-INF/views/common/header.jsp"  %>
-    <div class="page-content">
+    <div class="page-content" >
     	<div class="page-title">마이페이지</div>
     	<form action="/update.do" method="post" name="updateFrm">
     	

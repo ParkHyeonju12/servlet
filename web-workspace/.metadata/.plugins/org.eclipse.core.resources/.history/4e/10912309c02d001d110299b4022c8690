@@ -1,0 +1,11 @@
+package kr.or.iei.photo.model.service;
+
+public class PhotoService {
+	private Package dao;
+
+	public PhotoService() {
+		super();
+		dao = new PhotoService();
+	}
+	
+}

@@ -12,21 +12,22 @@
     <link rel="stylesheet" href="/css/default.css" />
     <!-- 기본 js -->
     <script src="/js/default.js"></script>
+
     
-	<header>
+	<header style="background:#d9a7c7; background: -webkit-linear-gradient(to left, #d9a7c7, #fffcdc);background: linear-gradient(to left, #d9a7c7, #fffcdc);">
       <div class="site-logo">
-        <a href="/">ZOO WORLD</a>
+        <a href="/" style="color:hotpink;">ZOO WORLD</a>
       </div>
       <nav>
-        <ul class="navi">
-          <li><a href="/noticeList.do?reqPage=1">공지사항</a></li>
+        <ul class="navi" >
+          <li><a href="/noticeList.do?reqPage=1" >공지사항</a></li>
           <li><a href="#">자유게시판</a></li> <!--공지사항 복습용, db먼저 만들고 해 -->
-          <li><a href="#">메뉴-3</a></li>
-          <li><a href="#">메뉴-4</a></li>
+          <li><a href="/ajax.do">AJAX</a></li>
+          <li><a href="/photoList.do">사진게시판</a></li>
           <li>
-			<a href="#">메뉴-5</a>
+			<a href="#">API</a>
             <ul class="sub-navi">
-              <li><a href="#">sub-1</a></li>
+              <li><a href="/email.do">EMAIL</a></li>
               <li><a href="#">sub-2</a></li>
               <li><a href="#">sub-3</a></li>
             </ul>
@@ -35,12 +36,12 @@
       </nav>
       <div class="header-link">
       <%if(m == null) {%>
-        <button class="btn bc11 modal-open-btn" target="#login-modal">SIGN IN</button>
-        <a class="btn bc11" href="/signupFrm.do">SIGN UP</a>
+        <button class="btn bc88 modal-open-btn" target="#login-modal">SIGN IN</button>
+        <a class="btn bc88" href="/signupFrm.do">SIGN UP</a>
         <%} else { %>
        <%-- <a class = "btn bc11" href="/mypage1.do"><%=m.getMemberName() %></a> --%>
-     	<a class = "btn bc11" href="/mypage2.do?memberId=<%=m.getMemberId()%>"><%=m.getMemberName() %></a>
-        <a class = "btn bc11" href="/logout.do">LOGOUT</a>
+     	<a class = "btn bc33" href="/mypage2.do?memberId=<%=m.getMemberId()%>"><%=m.getMemberName() %></a>
+        <a class = "btn bc33" href="/logout.do">LOGOUT</a>
         <%} %>
       </div>
     </header>

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	<div class="page-content">
+	<div class="page-content" >
 		<h1>MVC2 web Project 메인페이지</h1>
 	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
