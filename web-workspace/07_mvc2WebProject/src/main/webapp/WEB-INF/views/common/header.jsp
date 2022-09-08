@@ -28,8 +28,8 @@
 			<a href="#">API</a>
             <ul class="sub-navi">
               <li><a href="/email.do">EMAIL</a></li>
-              <li><a href="#">sub-2</a></li>
-              <li><a href="#">sub-3</a></li>
+              <li><a href="/map.do">MAP</a></li>
+              <li><a href="/pay.do">결제모듈</a></li>
             </ul>
            </li>
         </ul>	

@@ -59,21 +59,56 @@
 			data : {email:email},
 			type : "post",
 			success : function(data){
-				console.log(data);
-				mailCode = data;
-				$("#auth").show();
+				if(data !=null){
+				mailCode = data; 
+				$("#auth").show(); //인증창 보여주기
+				authTime(); //인증시간 3분 셋팅
+				}
 			}
 		});
 	}
+	let intervalId;
+	function authTime(){
+		$("#timeZone").html("<span id='min'>3</span> : <span id ='sec'>00</span>");
+		intervalId = window.setInterval(function(){
+			timeCount();
+		},1000);
+	}
+	function timeCount(){
+		const min = Number($("#min").text());
+		const sec = $("#sec").text();
+		if(sec == "00"){
+			if(min == 0){
+				mailCode = null;
+				clearInterval(intervalId);
+			}else {
+				$("#min").text(min-1);
+				$("#sec").text(59);
+			}
+		}else {
+			const newSec = Number(sec)-1;
+			if(newSec<10){
+				$("#sec").text("0"+newSec);
+			}else{
+				$("#sec").text(newSec);
+			}
+		}
+	}
 	$("#authBtn").on("click",function(){
 		const inputValue = $("#authCode").val();
-		if(inputValue == mailCode){
-			$("#authMsg").text("인증성공");
-			$("#authMsg").css("color","blue");
-		}else {
-			$("#authMsg").text("인증실패");
+		if(mailCode != null){
+			if(inputValue == mailCode){
+				$("#authMsg").text("인증성공");
+				$("#authMsg").css("color","blue");
+				clearInterval(intervalId);
+				$("#timeZone").hide();
+			}else {
+				$("#authMsg").text("인증실패");
+				$("#authMsg").css("color","red");
+			}
+		}else{
+			$("#authMsg").text("인증시간만료")
 			$("#authMsg").css("color","red");
-			
 		}
 		
 	});
